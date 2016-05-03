@@ -1,3 +1,5 @@
+import {getRandomInt} from '../utils/numbers';
+
 export default  ({canvas, ctx}) => ({
   stars: (stars) => {
     ctx.fillStyle = '#000000';
@@ -15,5 +17,15 @@ export default  ({canvas, ctx}) => ({
     ctx.lineTo(x + width, y);
     ctx.lineTo(x - width, y);
     ctx.fill();
+  },
+  enemies: function(enemies) {
+    enemies.forEach(enemy => {
+      enemy.y += 5;
+      enemy.x += getRandomInt(-15,15);
+
+      this.triangle(enemy.x, enemy.y, 20, '#00ff00', 'down');
+
+
+    })
   }
 });
